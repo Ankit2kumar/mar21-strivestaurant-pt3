@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import { Carousel, Col, Container, Row } from 'react-bootstrap'
+import { Alert, Carousel, Col, Container, Row } from 'react-bootstrap'
 import items from '../data/menu.json'
 import DishComments from './DishComments'
 import ReservationForm from './ReservationForm'
@@ -21,7 +21,8 @@ class Home extends React.Component {
     // the lifespan of our page/component
 
     state = {
-        selectedDish: items[0], // we always need to provide an initial state for our component
+        selectedDish: items[0],
+         // we always need to provide an initial state for our component
     }
 
     // the state object in a react component is READ-ONLY
@@ -87,8 +88,13 @@ class Home extends React.Component {
                 </Row>
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
+                        {
+                            this.state.selectedDish.comments.some(comment=>(comment.rating<5)) 
+                                ? <Alert>No 5 Ratings so far</Alert>
+                                :<ReservationForm />
+                        }
                         
-                            <ReservationForm />
+                           
                         
                     </Col>
                 </Row>
