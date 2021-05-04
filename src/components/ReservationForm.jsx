@@ -21,7 +21,9 @@ class ReservationForm extends React.Component {
             smoking: false,
             dateTime: '',
             specialRequests: '',
-        }
+            
+        },
+        isVisible: false,
     }
 
     submitReservation = async (e) => {
@@ -99,8 +101,9 @@ class ReservationForm extends React.Component {
         return (
             // React Fragment, just for wrap multiple elements out of my return statement
             <>
-                <h2>Book your table NOW!</h2>
-                <Form onSubmit={this.submitReservation}>
+                <h2 onClick={() => this.state.isVisible ? this.setState({isVisible:false}) :this.setState({isVisible:true})}>Book your table NOW!</h2>
+                {
+                (this.state.isVisible)&&(<Form onSubmit={this.submitReservation}>
                     <Form.Group>
                         <Form.Label>Name</Form.Label>
                         <Form.Control
@@ -202,6 +205,8 @@ class ReservationForm extends React.Component {
                         Send reservation
                     </Button>
                 </Form>
+                )
+    }
             </>
         )
     }

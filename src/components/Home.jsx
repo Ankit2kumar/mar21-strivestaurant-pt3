@@ -1,3 +1,5 @@
+
+import { Alert } from 'bootstrap'
 import React from 'react'
 import { Carousel, Col, Container, Row } from 'react-bootstrap'
 import items from '../data/menu.json'
@@ -35,6 +37,7 @@ class Home extends React.Component {
                 {/* <div class="container" /> */}
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
+                        {}
                         <Reservations />
                     </Col>
                 </Row>
@@ -56,7 +59,7 @@ class Home extends React.Component {
                                         key={item.name}
                                         // the key prop must be unique for every slide
                                         onClick={() => this.setState({ selectedDish: item })}
-                                    >
+                                    >  
                                         {/* the key is necessary for React's VIRTUAL DOM */}
                                         <img
                                             className="d-block w-100"
@@ -75,12 +78,18 @@ class Home extends React.Component {
                 </Row>
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
-                        <DishComments dish={this.state.selectedDish} marginTop={0} />
+                        {
+                            !(this.state.selectedDish.name==='Amatriciana') && 
+                        
+                        (<DishComments dish={this.state.selectedDish} marginTop={0} />)
+    }
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
-                        <ReservationForm />
+                        
+                            <ReservationForm />
+                        
                     </Col>
                 </Row>
             </Container>
