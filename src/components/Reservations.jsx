@@ -69,8 +69,14 @@ class Reservations extends Component {
 
         return (
             <>
-                <h3>RESERVATIONS</h3>
-                {/* conditional rendering */}
+                
+                {
+                this.props.heading && <h3>{this.props.heading}</h3>
+                }
+
+                {
+                    !this.props.heading && <h3>Reservations</h3>
+                }
                 {
                     this.state.isLoading &&
                     <Spinner animation="border" variant="primary" />

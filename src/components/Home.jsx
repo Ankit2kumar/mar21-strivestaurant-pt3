@@ -39,7 +39,7 @@ class Home extends React.Component {
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
                         {}
-                        <Reservations />
+                        <Reservations heading=''/>
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-3">
